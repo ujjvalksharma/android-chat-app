@@ -5,6 +5,9 @@ public class ChatMessage {
    String username;
    String textMessage;
 
+    public ChatMessage(){
+
+    }
     public ChatMessage(String username, String textMessage) {
         this.username = username;
         this.textMessage = textMessage;

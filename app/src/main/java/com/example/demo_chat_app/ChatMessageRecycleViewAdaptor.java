@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
@@ -42,9 +43,11 @@ public class ChatMessageRecycleViewAdaptor extends RecyclerView.Adapter<ChatMess
         public void onBindViewHolder(ViewHolder viewHolder,  int position) {
             ChatMessage tempChatMessage=chatMessages.get(position);
             if(tempChatMessage.getUsername().equals(username)){
-                viewHolder.senderChatTextView.setContentDescription(tempChatMessage.getUsername()+ " : "+tempChatMessage.getTextMessage());
+                viewHolder.chatText.setText(tempChatMessage.getUsername()+ " : "+tempChatMessage.getTextMessage());
+                viewHolder.chatText.setTextColor(Color.GREEN);
             }else {
-                viewHolder.reciverChatTextView.setContentDescription(tempChatMessage.getUsername()+ " : "+tempChatMessage.getTextMessage());
+                viewHolder.chatText.setText(tempChatMessage.getUsername()+ " : "+tempChatMessage.getTextMessage());
+                viewHolder.chatText.setTextColor(Color.BLUE);
             }
 
     }
@@ -55,12 +58,14 @@ public class ChatMessageRecycleViewAdaptor extends RecyclerView.Adapter<ChatMess
     }
 
         public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-          TextView senderChatTextView;
-          TextView reciverChatTextView;
+       //   TextView senderChatTextView;
+        //  TextView reciverChatTextView;
+            TextView chatText;
             ViewHolder(View itemView) {
                 super(itemView);
-                senderChatTextView = itemView.findViewById(R.id.SenderChatTextView);
-                reciverChatTextView = itemView.findViewById(R.id.ReciverChatTextView);
+           //     senderChatTextView = itemView.findViewById(R.id.SenderChatTextView);
+        //        reciverChatTextView = itemView.findViewById(R.id.ReciverChatTextView);
+                chatText = itemView.findViewById(R.id.chatText);
             }
 
             @Override
